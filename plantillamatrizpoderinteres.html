@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Taller: Matriz de Poder e Interés con JSON</title>
+  <style>
+    * { box-sizing: border-box; } /* Incluye padding y borde dentro del ancho/alto declarado */
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f6f9; } /* Estilo base del documento */
+
+    .panel-control { background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } /* Tarjeta contenedora del formulario y acciones JSON */
+    .panel-control form, .panel-control .json-actions { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; } /* Alinea los controles en fila con espacio entre ellos */
+
+    .matrix-container { /* Define la cuadrícula 2x2 de la matriz */
+      display: grid; /* Activa el layout de grilla */
+      grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+      grid-template-rows: 1fr 1fr; /* Dos filas de igual alto */
+      width: 600px; /* Ancho fijo de la matriz */
+      height: 600px; /* Alto fijo de la matriz */
+      border: 3px solid #333; /* Borde exterior de la matriz */
+      position: relative; /* Contexto de posicionamiento para las etiquetas absolutas */
+      margin: 0 auto; /* Centra la matriz horizontalmente */
+      background-color: #fff; /* Fondo blanco de la matriz */
+    }
+
+    .quadrant { border: 1px dashed #bbb; padding: 10px; position: relative; overflow: hidden; } /* Estilo común de cada cuadrante */
+    .q-manage { background-color: #d1e7dd; } /* Poder Alto, Interés Alto */
+    .q-satisfy { background-color: #fff3cd; } /* Poder Alto, Interés Bajo */
+    .q-inform { background-color: #cff4fc; }  /* Poder Bajo, Interés Alto */
+    .q-monitor { background-color: #f8d7da; } /* Poder Bajo, Interés Bajo */
+
+    .quadrant-title { font-weight: bold; font-size: 14px; opacity: 0.7; pointer-events: none; } /* Estilo del texto que identifica cada cuadrante */
+
+    .tag { /* Estilo de las etiquetas de involucrados sobre la matriz */
+      position: absolute; /* Se posiciona respecto a .matrix-container */
+      background: #212529; /* Color de fondo de la etiqueta */
+      color: #fff; /* Color del texto de la etiqueta */
+      padding: 4px 8px; /* Espaciado interno de la etiqueta */
+      border-radius: 4px; /* Bordes redondeados de la etiqueta */
+      font-size: 11px; /* Tamaño de fuente de la etiqueta */
+      transform: translate(-50%, 50%); /* Centra la etiqueta sobre sus coordenadas */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra para resaltar la etiqueta */
+      cursor: pointer; /* Cursor de mano al pasar sobre la etiqueta */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fase de Análisis: Matriz de Poder e Interés (MML)</h2>
+
+  <div class="panel-control"> <!-- Panel superior con el formulario y las acciones de JSON -->
+    <form id="stakeholderForm">
+    <input type="text" id="nombre" placeholder="Nombre (ej. Director, Estudiantes)" required>
+    <label>Poder (1-10): <input type="number" id="poder" min="1" max="10" required></label>
+    <label>Interes (1-10): <input type="number" id="interes" min="1" max="10" required></label>
+    <button type="submit">Agregar Interesado</button>
+</form>
+  <!-- Contenedor Visual 2x2 -->
+  <div class="matrix-container" id="matrix"> <!-- Grilla 2x2 donde se dibujan los cuadrantes y las etiquetas -->
+    <div class="quadrant q-satisfy"><span class="quadrant-title">Mantener Satisfecho (Poder ↑ / Interés ↓)</span></div> <!-- Cuadrante superior izquierdo -->
+    <div class="quadrant q-manage"><span class="quadrant-title">Gestionar Atentamente (Poder ↑ / Interés ↑)</span></div> <!-- Cuadrante superior derecho -->
+    <div class="quadrant q-monitor"><span class="quadrant-title">Monitorear (Poder ↓ / Interés ↓)</span></div> <!-- Cuadrante inferior izquierdo -->
+    <div class="quadrant q-inform"><span class="quadrant-title">Mantener Informado (Poder ↓ / Interés ↑)</span></div> <!-- Cuadrante inferior derecho -->
+  </div>
+
+  <script>
+  </script>
+</body>
+</html>
